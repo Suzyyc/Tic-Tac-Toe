@@ -1,6 +1,7 @@
 .container {
   width: 90%;
   margin: auto;
+  font-family: "Nothing You Could Do", cursive;
 }
 
 body {
@@ -9,9 +10,14 @@ body {
   background-size: cover;
 }
 
-h1 {
+h1,
+.results {
   text-align: center;
-  font-family: "Nothing You Could Do", cursive;
+}
+
+h1 {
+  font-size: 80px;
+  margin-bottom: 30px;
 }
 
 .grid {
@@ -20,10 +26,38 @@ h1 {
   border: 1px solid black;
 }
 
-#ttc {
+.row {
+  display: flex;
+  justify-content: center;
+}
+
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
+a {
+  text-decoration: none;
+  font-size: 10px;
+  color: grey;
+  opacity: 0.1;
+}
+
+/* #ttt {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+} */
+
+/* #ttt {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+} */
+
+.restartbutton {
   display: flex;
   align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  flex-direction: row;
 }
