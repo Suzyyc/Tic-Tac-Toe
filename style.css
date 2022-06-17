@@ -1,11 +1,29 @@
+.container {
+  width: 90%;
+  margin: auto;
+}
+
 body {
-  background-color: cornflowerblue;
+  background-image: url("./Background-Image/blue-sky-clouds.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+h1 {
+  text-align: center;
+  font-family: "Nothing You Could Do", cursive;
 }
 
 .grid {
   width: 50px;
   height: 50px;
   border: 1px solid black;
+}
+
+#ttc {
   display: flex;
+  align-items: center;
+  justify-content: center;
   flex-wrap: wrap;
+  flex-direction: row;
 }
