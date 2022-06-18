@@ -27,7 +27,22 @@ let currentPlayer = playerX;
 document.querySelectorAll(".grid").forEach((text) => {
   text.addEventListener("click", () => {
     text.innerHTML = currentPlayer.name;
-    currentPlayer = playerO;
+    // Turn 1
+    // X clicks
+    // Switch player to player0
+
+    // Turn 2
+    // 0 clicks
+    // Switch player to playerX
+
+    // Turn 3
+    // ... same as turn 1
+
+    if (currentPlayer === playerX) {
+      currentPlayer = playerO;
+    } else if (currentPlayer === playerO) {
+      currentPlayer = playerX;
+    }
   });
 });
 
