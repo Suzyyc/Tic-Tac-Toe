@@ -39,7 +39,7 @@ const winningCombos = [
 const compareArrays = (win, playerCombo) => {
   // bStr = "123" exist in aStr = "12345"? subset
   return win.every((value) => playerCombo.includes(value)); // every loops trhough the win array. includes - checks if the players wining combo is in the array. like lotto
-};
+}; //determines whether an array includes a certain value among its entries, returning true or false
 
 //Player X
 document.querySelectorAll(".grid").forEach((text) => {
@@ -94,7 +94,7 @@ document.querySelectorAll(".grid").forEach((text) => {
   });
 });
 
-// if all 9 turns go and no one won. do a draw
+// if all 9 turns go and no one won. do a draw/tie
 
 // function to see who is playing
 // define who the players Are`
@@ -102,6 +102,4 @@ document.querySelectorAll(".grid").forEach((text) => {
 //=======================================
 // to restart the whole game/page
 //=======================================
-document.querySelector(".restartButton").addEventListener("click", () => {
-  console.log("Run bitch");
-});
+document.querySelector(".restartButton").addEventListener("click", () => {});
