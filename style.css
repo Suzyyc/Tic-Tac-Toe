@@ -11,7 +11,8 @@ body {
 }
 
 h1,
-.results {
+.results,
+.won {
   text-align: center;
 }
 

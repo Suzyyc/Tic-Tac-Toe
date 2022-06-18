@@ -36,12 +36,9 @@ const winningCombos = [
   [3, 5, 7],
 ];
 
-const compareArrays = (a, b) => {
-  const aString = a.sort().join();
-  const bString = b.sort().join();
+const compareArrays = (win, playerCombo) => {
   // bStr = "123" exist in aStr = "12345"? subset
-  console.log(aString, bString);
-  return aString.indexOf(bString) !== -1 || bString.indexOf(aString) !== -1;
+  return win.every((value) => playerCombo.includes(value)); // every loops trhough the win array. includes - checks if the players wining combo is in the array. like lotto
 };
 
 //Player X
@@ -67,10 +64,13 @@ document.querySelectorAll(".grid").forEach((text) => {
       //   console.log("you win");
       // }
 
-      if (currentPlayer.combination.length > 3) {
+      if (currentPlayer.combination.length >= 3) {
         for (let win of winningCombos) {
-          const hasWon = compareArrays(currentPlayer.combination, win);
-          if (hasWon) console.log(hasWon);
+          const hasWon = compareArrays(win, currentPlayer.combination);
+          if (hasWon) {
+            const winner = document.querySelector(".won");
+            winner.innerHTML = currentPlayer.name + " You Won";
+          }
         }
       }
 
