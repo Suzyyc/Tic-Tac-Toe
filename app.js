@@ -13,12 +13,14 @@ const playerX = {
   name: "X",
   turn: () => {},
   wins: 0,
+  combination: [],
 };
 
 const playerO = {
   name: "O",
   turn: () => {},
   wins: 0,
+  combination: [],
 };
 
 let currentPlayer = playerX;
@@ -28,8 +30,26 @@ document.querySelectorAll(".grid").forEach((text) => {
   text.addEventListener("click", () => {
     text.innerHTML = currentPlayer.name;
     // Turn 1
-    // X clicks
+    // X clicks on cell 2
+    // [2]
     // Switch player to player0
+
+    // get cell number once clicked
+    currentPlayer.combination.push(parseInt(text.getAttribute("id")));
+
+    // get winning winningCombos
+
+    // if (currentPlayer.combination === winningCombos) {
+    //   console.log("you win");
+    // }
+
+    for (let win of winningCombos) {
+      console.log(compareArrays(currentPlayer.combination, win));
+    }
+
+    console.log(currentPlayer.combination);
+    console.log(winningCombos);
+    // currentPlayer =
 
     // Turn 2
     // 0 clicks
@@ -45,6 +65,21 @@ document.querySelectorAll(".grid").forEach((text) => {
     }
   });
 });
+
+const winningCombos = [
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9],
+  [1, 4, 7],
+  [2, 5, 8],
+  [3, 6, 9],
+  [1, 5, 9],
+  [3, 5, 7],
+];
+
+let compareArrays = (a, b) => {
+  return a.sort().join() == b.sort().join();
+};
 
 //Player O
 
