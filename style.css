@@ -22,14 +22,18 @@ h1 {
 }
 
 .grid {
-  width: 60px;
-  height: 60px;
+  width: 80px;
+  height: 80px;
   border: 1px solid black;
 }
 
 .row {
   display: flex;
   justify-content: center;
+}
+
+.won {
+  font-size: 50px;
 }
 
 footer {

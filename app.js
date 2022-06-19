@@ -47,7 +47,7 @@ document.querySelectorAll(".grid").forEach((text) => {
     // Option 1: Check if the id value exists in a player's combination array
     // Option 2: Check if the HTML already has a value inside it
     if (text.innerHTML === "") {
-      console.log("run code");
+      //   console.log("run code");
       text.innerHTML = currentPlayer.name;
 
       // Turn 1
@@ -69,9 +69,18 @@ document.querySelectorAll(".grid").forEach((text) => {
           const hasWon = compareArrays(win, currentPlayer.combination);
           if (hasWon) {
             const winner = document.querySelector(".won");
-            winner.innerHTML = currentPlayer.name + " You Won";
+            winner.innerHTML = currentPlayer.name + " Won";
           }
         }
+      }
+      // we should validate the game state
+      // check if the game ended in a draw
+      if (currentPlayer.combination === currentPlayer.combination) {
+        // const drawResults = something;
+        // if (drawResults.innerHTML === "") {
+        //   const drawResult = document.querySelector(".draw");
+        //   drawResult.innerHTML = something + "It's a draw";
+        // }
       }
 
       // console.log(currentPlayer.combination);
@@ -102,4 +111,13 @@ document.querySelectorAll(".grid").forEach((text) => {
 //=======================================
 // to restart the whole game/page
 //=======================================
-document.querySelector(".restartButton").addEventListener("click", () => {});
+
+// restart game
+// go back to the first player
+// clear the board
+
+// document.querySelector(".restartButton").addEventListener("click", startGame);
+
+// const startGame = () => {
+// currentPlayer ===
+// }
