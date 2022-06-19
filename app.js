@@ -120,8 +120,13 @@ document.querySelectorAll(".grid").forEach((text) => {
 // go back to the first player
 // clear the board
 
-// document.querySelector(".restartButton").addEventListener("click", startGame);
+const startGame = () => {
+  currentPlayer = playerX;
+  document.querySelectorAll(".grid").forEach((cell) => {
+    cell.innerHTML = "";
+    winner.innerHTML = "";
+    drawResult.innerHTML = "";
+  });
+};
 
-// const startGame = () => {
-// currentPlayer ===
-// }
+document.querySelector(".restartButton").addEventListener("click", startGame);
