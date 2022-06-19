@@ -48,7 +48,7 @@ document.querySelectorAll(".grid").forEach((text) => {
   text.addEventListener("click", () => {
     // Option 1: Check if the id value exists in a player's combination array
     // Option 2: Check if the HTML already has a value inside it
-    if (text.innerHTML === "") {
+    if (text.innerHTML === "" && !winnerWinnerChickenDinner) {
       //   console.log("run code");
       text.innerHTML = currentPlayer.name;
 
