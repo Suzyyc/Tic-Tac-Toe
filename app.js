@@ -36,6 +36,8 @@ const winningCombos = [
   [3, 5, 7],
 ];
 
+let winnerWinnerChickenDinner = false;
+
 const compareArrays = (win, playerCombo) => {
   // bStr = "123" exist in aStr = "12345"? subset
   return win.every((value) => playerCombo.includes(value)); // every loops trhough the win array. includes - checks if the players wining combo is in the array. like lotto
@@ -68,20 +70,22 @@ document.querySelectorAll(".grid").forEach((text) => {
         for (let win of winningCombos) {
           const hasWon = compareArrays(win, currentPlayer.combination);
           if (hasWon) {
-            const winner = document.querySelector(".won");
+            const winner = document.querySelector(".gameResult");
             winner.innerHTML = currentPlayer.name + " Won";
+            winnerWinnerChickenDinner = true;
           }
+        }
+        if (
+          playerX.combination.length + playerO.combination.length === 9 &&
+          !winnerWinnerChickenDinner
+        ) {
+          console.log("its a draw");
+          const drawResult = document.querySelector(".gameResult");
+          drawResult.innerHTML = "It's a draw";
         }
       }
       // we should validate the game state
       // check if the game ended in a draw
-      if (currentPlayer.combination === currentPlayer.combination) {
-        // const drawResults = something;
-        // if (drawResults.innerHTML === "") {
-        //   const drawResult = document.querySelector(".draw");
-        //   drawResult.innerHTML = something + "It's a draw";
-        // }
-      }
 
       // console.log(currentPlayer.combination);
       // console.log(winningCombos);
