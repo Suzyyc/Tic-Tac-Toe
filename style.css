@@ -29,6 +29,30 @@ h1 {
   border: 1px solid black;
 }
 
+.g1,
+.g4,
+.g7 {
+  border-left: none;
+}
+
+.g3,
+.g6,
+.g9 {
+  border-right: none;
+}
+
+.g1,
+.g2,
+.g3 {
+  border-top: none;
+}
+
+.g7,
+.g8,
+.g9 {
+  border-bottom: none;
+}
+
 .row {
   display: flex;
   justify-content: center;
@@ -36,20 +60,6 @@ h1 {
 
 .gameResult {
   font-size: 50px;
-}
-
-footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  text-align: center;
-}
-a {
-  text-decoration: none;
-  font-size: 10px;
-  color: grey;
-  opacity: 0.1;
 }
 
 /* #ttt {

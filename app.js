@@ -75,8 +75,12 @@ document.querySelectorAll(".grid").forEach((text) => {
             logGameResults(currentPlayer.name + " Won");
             winnerWinnerChickenDinner = true;
             currentPlayer.wins++;
-
-            document.querySelector(".xPoints").innerHTML = currentPlayer.wins;
+            if (currentPlayer === playerX) {
+              document.querySelector(".xPoints").innerHTML = currentPlayer.wins;
+            }
+            if (currentPlayer === playerO) {
+              document.querySelector(".oPoints").innerHTML = currentPlayer.wins;
+            }
             console.log(currentPlayer.wins);
           }
         }
@@ -84,7 +88,6 @@ document.querySelectorAll(".grid").forEach((text) => {
           playerX.combination.length + playerO.combination.length === 9 &&
           !winnerWinnerChickenDinner
         ) {
-          console.log("its a draw");
           logGameResults("It's a draw");
         }
       }
