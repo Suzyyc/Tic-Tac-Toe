@@ -16,30 +16,34 @@
   <body>
     <div class="container">
       <h1>Tic Tac Toe</h1>
-      <div id="ttt">
-        <div class="row">
-          <div class="grid g1" id="1"></div>
-          <div class="grid g2" id="2"></div>
-          <div class="grid g3" id="3"></div>
+      <div class="mainDisplay">
+        <div class="results">
+          <p class="PlayerX">Player X Points: <span class="xPoints"></span></p>
         </div>
-        <div class="row">
-          <div class="grid g4" id="4"></div>
-          <div class="grid g5" id="5"></div>
-          <div class="grid g6" id="6"></div>
+        <div id="ttt">
+          <div class="row">
+            <div class="grid g1" id="1"></div>
+            <div class="grid g2" id="2"></div>
+            <div class="grid g3" id="3"></div>
+          </div>
+          <div class="row">
+            <div class="grid g4" id="4"></div>
+            <div class="grid g5" id="5"></div>
+            <div class="grid g6" id="6"></div>
+          </div>
+          <div class="row">
+            <div class="grid g7" id="7"></div>
+            <div class="grid g8" id="8"></div>
+            <div class="grid g9" id="9"></div>
+          </div>
         </div>
-        <div class="row">
-          <div class="grid g7" id="7"></div>
-          <div class="grid g8" id="8"></div>
-          <div class="grid g9" id="9"></div>
+        <br />
+
+        <div class="results">
+          <p class="playerO">Player O Points: <span class="oPoints"></span></p>
         </div>
       </div>
-      <br />
       <div class="gameResult"></div>
-      <div class="results">
-        <h2>Results</h2>
-        <p class="PlayerX">Player X Points: <span class="xPoints"></span></p>
-        <p class="playerO">Player O Points: <span class="oPoints"></span></p>
-      </div>
       <br />
       <div class="restartButton">
         <button>Restart</button>
