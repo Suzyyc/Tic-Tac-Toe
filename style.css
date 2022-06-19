@@ -5,7 +5,9 @@
 }
 
 body {
-  background-image: url("./Background-Image/blue-sky-clouds.jpg");
+  /* background-image: url("./Background-Image/blue-sky-clouds.jpg");
+   */
+  background-image: url("https://68.media.tumblr.com/4473826397d286134aadd294bd816af7/tumblr_ooxcw0Sfpj1vbdodoo1_1280.gif");
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -78,6 +80,5 @@ button {
   padding: 8px 16px;
   font-family: "Nothing You Could Do", cursive;
   font-size: 16px;
-
   line-height: 20px;
 }

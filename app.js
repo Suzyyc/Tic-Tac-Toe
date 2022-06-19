@@ -11,14 +11,12 @@ const grids = document.querySelectorAll("#ttt");
 
 const playerX = {
   name: "X",
-  turn: () => {},
   wins: 0,
   combination: [],
 };
 
 const playerO = {
   name: "O",
-  turn: () => {},
   wins: 0,
   combination: [],
 };
@@ -37,6 +35,10 @@ const winningCombos = [
 ];
 
 let winnerWinnerChickenDinner = false;
+
+const logGameResults = (words) => {
+  document.querySelector(".gameResult").innerHTML = words;
+};
 
 const compareArrays = (win, playerCombo) => {
   // bStr = "123" exist in aStr = "12345"? subset
@@ -70,9 +72,12 @@ document.querySelectorAll(".grid").forEach((text) => {
         for (let win of winningCombos) {
           const hasWon = compareArrays(win, currentPlayer.combination);
           if (hasWon) {
-            const winner = document.querySelector(".gameResult");
-            winner.innerHTML = currentPlayer.name + " Won";
+            logGameResults(currentPlayer.name + " Won");
             winnerWinnerChickenDinner = true;
+            currentPlayer.wins++;
+
+            document.querySelector(".xPoints").innerHTML = currentPlayer.wins;
+            console.log(currentPlayer.wins);
           }
         }
         if (
@@ -80,10 +85,10 @@ document.querySelectorAll(".grid").forEach((text) => {
           !winnerWinnerChickenDinner
         ) {
           console.log("its a draw");
-          const drawResult = document.querySelector(".gameResult");
-          drawResult.innerHTML = "It's a draw";
+          logGameResults("It's a draw");
         }
       }
+
       // we should validate the game state
       // check if the game ended in a draw
 
@@ -124,9 +129,11 @@ const startGame = () => {
   currentPlayer = playerX;
   document.querySelectorAll(".grid").forEach((cell) => {
     cell.innerHTML = "";
-    winner.innerHTML = "";
-    drawResult.innerHTML = "";
   });
+  logGameResults("");
+  playerX.combination = [];
+  playerO.combination = [];
+  winnerWinnerChickenDinner = false;
 };
 
 document.querySelector(".restartButton").addEventListener("click", startGame);
