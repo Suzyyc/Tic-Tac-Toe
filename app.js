@@ -2,13 +2,6 @@ const container = document.querySelector(".container");
 
 const grids = document.querySelectorAll("#ttt");
 
-// const text = document.querySelectorAll(".grid");
-// for (let click of text) {
-//     text[].addEventListener("click", () => {
-//     text.innerHTML = "X";
-//   });
-// }
-
 const playerX = {
   name: "X",
   wins: 0,
@@ -42,32 +35,25 @@ const logGameResults = (words) => {
 
 const compareArrays = (win, playerCombo) => {
   // bStr = "123" exist in aStr = "12345"? subset
-  return win.every((value) => playerCombo.includes(value)); // every loops trhough the win array. includes - checks if the players wining combo is in the array. like lotto
+  return win.every((value) => playerCombo.includes(value)); // every, loops through the win array. includes - checks if the players wining combo is in the array. like lotto
 }; //determines whether an array includes a certain value among its entries, returning true or false
+// what is the value?
 
-//Player X
+//Players
 document.querySelectorAll(".grid").forEach((text) => {
   text.addEventListener("click", () => {
     // Option 1: Check if the id value exists in a player's combination array
     // Option 2: Check if the HTML already has a value inside it
     if (text.innerHTML === "" && !winnerWinnerChickenDinner) {
-      //   console.log("run code");
       text.innerHTML = currentPlayer.name;
 
-      // Turn 1
-      // X clicks on cell 2
-      // [2]
-      // Switch player to player0
-
+      // Turn 1 - X clicks on cell
+      // Turn 2 - Switch player to player0 and let them click a cell
       // get cell number once clicked
+
       currentPlayer.combination.push(parseInt(text.getAttribute("id")));
 
       // get winning winningCombos
-
-      // if (currentPlayer.combination === winningCombos) {
-      //   console.log("you win");
-      // }
-
       if (currentPlayer.combination.length >= 3) {
         for (let win of winningCombos) {
           const hasWon = compareArrays(win, currentPlayer.combination);
@@ -84,6 +70,9 @@ document.querySelectorAll(".grid").forEach((text) => {
             console.log(currentPlayer.wins);
           }
         }
+
+        // we should validate the game state
+        // check if the game ended in a draw
         if (
           playerX.combination.length + playerO.combination.length === 9 &&
           !winnerWinnerChickenDinner
@@ -91,21 +80,8 @@ document.querySelectorAll(".grid").forEach((text) => {
           logGameResults("It's a draw");
         }
       }
-
-      // we should validate the game state
-      // check if the game ended in a draw
-
-      // console.log(currentPlayer.combination);
-      // console.log(winningCombos);
-      // currentPlayer =
-
-      // Turn 2
-      // 0 clicks
-      // Switch player to playerX
-
-      // Turn 3
-      // ... same as turn 1
-
+      // function to see who is playing
+      // define who the players are and switch
       if (currentPlayer === playerX) {
         currentPlayer = playerO;
       } else if (currentPlayer === playerO) {
@@ -115,10 +91,24 @@ document.querySelectorAll(".grid").forEach((text) => {
   });
 });
 
-// if all 9 turns go and no one won. do a draw/tie
+///==============================================
+// /hover over grid and show which player is playing
+//when you leave grid don't show
+///==============================================
 
-// function to see who is playing
-// define who the players Are`
+document.querySelectorAll(".grid").forEach((cell) => {
+  cell.addEventListener("mouseover", () => {
+    // if (cell.innerHTML(currentPlayer.name)) {
+    cell.innerHTML = currentPlayer.name;
+    // }
+  });
+});
+// if (text.innerHTML === "" && !winnerWinnerChickenDinner) {
+//     text.innerHTML = currentPlayer.name;
+
+// const $wrapper = document.querySelector(".grid");
+// $grid.addEventListener("mouseover", displayTxt);
+// $grid.addEventListener("mouseout", removeTxt);
 
 //=======================================
 // to restart the whole game/page
