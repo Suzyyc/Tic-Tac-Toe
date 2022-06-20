@@ -42,9 +42,8 @@ const compareArrays = (win, playerCombo) => {
 //Players
 document.querySelectorAll(".grid").forEach((text) => {
   text.addEventListener("click", () => {
-    // Option 1: Check if the id value exists in a player's combination array
-    // Option 2: Check if the HTML already has a value inside it
-    // TODO: Change the guard because of hover
+    // Check if the HTML already has a value inside it
+    // Change the guard because of hover
     if (
       !text.classList.contains(playerX.name) &&
       !winnerWinnerChickenDinner &&
@@ -100,27 +99,28 @@ document.querySelectorAll(".grid").forEach((text) => {
 });
 
 ///==============================================
-// /hover over grid and show which player is playing
-//when you leave grid don't show
+/// hover over grid and show which player is playing
+// when you leave grid don't show
 ///==============================================
 
 document.querySelectorAll(".grid").forEach((cell) => {
   cell.addEventListener("mouseover", () => {
-    cell.innerHTML = currentPlayer.name;
+    if (
+      !playerX.combination.includes(parseInt(cell.getAttribute("id"))) && // if player combo does not include a cell id, run code
+      !playerO.combination.includes(parseInt(cell.getAttribute("id")))
+    ) {
+      cell.innerHTML = currentPlayer.name;
+    }
   });
   cell.addEventListener("mouseout", () => {
     if (
       !playerX.combination.includes(parseInt(cell.getAttribute("id"))) &&
       !playerO.combination.includes(parseInt(cell.getAttribute("id")))
     ) {
-      cell.innerHTML = "";
+      cell.innerHTML = ""; // leave cell id empty
     }
   });
 });
-
-// const $wrapper = document.querySelector(".grid");
-// $grid.addEventListener("mouseover", displayTxt);
-// $grid.addEventListener("mouseout", removeTxt);
 
 //=======================================
 // to restart the whole game/page
