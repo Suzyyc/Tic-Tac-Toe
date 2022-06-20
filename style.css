@@ -28,6 +28,12 @@ h1 {
   margin-bottom: 30px;
 }
 
+.results {
+  display: flex;
+  align-items: center;
+  font-size: 25px;
+}
+
 .grid {
   width: 100px;
   height: 100px;
@@ -64,7 +70,10 @@ h1 {
 }
 
 .gameResult {
-  font-size: 50px;
+  display: flex;
+  justify-content: center;
+  font-size: 60px;
+  min-height: 80px;
 }
 
 .grid {
@@ -75,7 +84,7 @@ h1 {
 }
 
 #ttt {
-  margin: 0px 40px 20px;
+  margin: 0px 60px 20px;
 }
 
 /* #ttt {

@@ -127,6 +127,7 @@ document.querySelectorAll(".grid").forEach((text) => {
 // restart game
 // go back to the first player
 // clear the board
+// make it so the button stays put
 
 const startGame = () => {
   currentPlayer = playerX;
