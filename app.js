@@ -154,15 +154,60 @@ const startGame = () => {
   winnerWinnerChickenDinner = false;
 };
 
-// !playerX.combination.includes(parseInt(cell.getAttribute("id"))) &&
-//   !playerO.combination.includes(parseInt(cell.getAttribute("id")));
-
-// !text.classList.contains(playerX.name) &&
-//   !winnerWinnerChickenDinner &&
-//   !text.classList.contains(playerO.name);
-
 ////=====================
-// AI
+// AI mode
 ////=====================
+// Ai is the second player
+//needs to select a random grid/cell
+//then switch back to player 1/X
+// play out the game, see who wins/draw
+//AI to count points under playerO
+//playerO to change to ai and announce score? Need to change gameResult?
+
+//set the AI button to run
+
+const aI = {
+  currentChoice: null,
+};
+
+document.querySelectorAll(".grid").forEach((aiChoice) => {
+  aiChoice.addEventListener("click", () => {
+    if (
+      !aiChoice.classList.contains(playerX.name) &&
+      !winnerWinnerChickenDinner
+    ) {
+      randomChoice = Math.floor(Math.random() * grids.length);
+      aI.currentChoice = grids[randomChoice];
+      console.log("something");
+    }
+  });
+});
+
+// function computerChooses() {
+//   const randomChoice = Math.floor(Math.random() * choices.length);
+//   aI.currentChoice = choices[randomChoice];
+// }
+
+// document.querySelectorAll(".grid").forEach((text) => {
+//   text.addEventListener("click", () => {
+//     if (!text.classList.contains(playerX.name) && !winnerWinnerChickenDinner)
+//       text.classList.add(currentPlayer.name);
+//       console.log();
+//   });
+// });
+
+//     if (
+//       !text.classList.contains(playerX.name) &&
+//       !winnerWinnerChickenDinner &&
+//       !text.classList.contains(playerO.name)
+//     ) {
+//       text.innerHTML = currentPlayer.name;
+//       // Add new class to "text" element when clicking
+//       // e.g. X, O
+//       text.classList.add(currentPlayer.name);
+//     }
+//   });
+//   currentPlayer.combination.push(parseInt(text.getAttribute("id")));
+// });
 
 document.querySelector(".restartButton").addEventListener("click", startGame);
