@@ -14,7 +14,15 @@ const playerO = {
   combination: [],
 };
 
+let possibleOptions = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
 let currentPlayer = playerX;
+
+let aiMode = false;
+document.querySelector(".aiButton").addEventListener("click", () => {
+  aiMode = true;
+  console.log(aiMode);
+});
 
 const winningCombos = [
   [1, 2, 3],
@@ -57,8 +65,11 @@ document.querySelectorAll(".grid").forEach((text) => {
       // Turn 1 - X clicks on cell
       // Turn 2 - Switch player to player0 and let them click a cell
       // get cell number once clicked
+      const currentPositon = parseInt(text.getAttribute("id"));
+      const removePosition = possibleOptions.indexOf(currentPositon);
+      possibleOptions.splice(removePosition, 1);
 
-      currentPlayer.combination.push(parseInt(text.getAttribute("id")));
+      currentPlayer.combination.push(currentPositon);
 
       // get winning winningCombos
       if (currentPlayer.combination.length >= 3) {
@@ -93,6 +104,14 @@ document.querySelectorAll(".grid").forEach((text) => {
         currentPlayer = playerO;
       } else if (currentPlayer === playerO) {
         currentPlayer = playerX;
+      }
+
+      if (aiMode && currentPlayer === playerO) {
+        //   ai to select a empty grid randomly
+        const randomChoice = Math.floor(Math.random() * possibleOptions.length);
+        console.log(randomChoice);
+        document.querySelector(".g" + possibleOptions[randomChoice]).click();
+        console.log("clicking cause I am AI");
       }
     }
   });
@@ -152,6 +171,7 @@ const startGame = () => {
   playerX.combination = [];
   playerO.combination = [];
   winnerWinnerChickenDinner = false;
+  possibleOptions = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 };
 
 ////=====================
