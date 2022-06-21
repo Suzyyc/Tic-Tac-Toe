@@ -145,9 +145,8 @@ document.querySelectorAll(".grid").forEach((cell) => {
 const startGame = () => {
   currentPlayer = playerX;
   document.querySelectorAll(".grid").forEach((cell) => {
-    !playerX.combination.includes(parseInt(cell.getAttribute("id"))) &&
-      !playerO.combination.includes(parseInt(cell.getAttribute("id")));
     cell.innerHTML = "";
+    cell.classList.remove(playerO.name, playerX.name);
   });
   logGameResults("");
   playerX.combination = [];
