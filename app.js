@@ -131,9 +131,22 @@ document.querySelectorAll(".grid").forEach((cell) => {
 // clear the board
 // make it so the button stays put
 
+// const startGame = () => {
+//   currentPlayer = playerX;
+//   document.querySelectorAll(".grid").forEach((cell) => {
+//     cell.innerHTML = "";
+//   });
+//   logGameResults("");
+//   playerX.combination = [];
+//   playerO.combination = [];
+//   winnerWinnerChickenDinner = false;
+// };
+
 const startGame = () => {
   currentPlayer = playerX;
   document.querySelectorAll(".grid").forEach((cell) => {
+    !playerX.combination.includes(parseInt(cell.getAttribute("id"))) &&
+      !playerO.combination.includes(parseInt(cell.getAttribute("id")));
     cell.innerHTML = "";
   });
   logGameResults("");
@@ -141,5 +154,16 @@ const startGame = () => {
   playerO.combination = [];
   winnerWinnerChickenDinner = false;
 };
+
+// !playerX.combination.includes(parseInt(cell.getAttribute("id"))) &&
+//   !playerO.combination.includes(parseInt(cell.getAttribute("id")));
+
+// !text.classList.contains(playerX.name) &&
+//   !winnerWinnerChickenDinner &&
+//   !text.classList.contains(playerO.name);
+
+////=====================
+// AI
+////=====================
 
 document.querySelector(".restartButton").addEventListener("click", startGame);
