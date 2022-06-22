@@ -10,7 +10,6 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
-  vertical-align: bottom;
 }
 
 .mainDisplay {
@@ -91,20 +90,19 @@ h1 {
 .restartButton {
   font-weight: bold;
   color: black;
-  margin-bottom: 100px;
-  margin-right: 5px;
+  margin-bottom: 10px;
 }
 
 .aiButton {
   font-weight: bold;
   color: black;
-  margin-bottom: 100px;
-  margin-left: 5px;
 }
 
 .buttons {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 100px;
 }
 
 button {

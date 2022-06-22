@@ -1,7 +1,7 @@
 const container = document.querySelector(".container");
-
 const grids = document.querySelectorAll("#ttt");
 
+// players
 const playerX = {
   name: "X",
   wins: 0,
@@ -14,15 +14,8 @@ const playerO = {
   combination: [],
 };
 
-let possibleOptions = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-
 let currentPlayer = playerX;
-
-let aiMode = false;
-document.querySelector(".aiButton").addEventListener("click", () => {
-  aiMode = true;
-  console.log(aiMode);
-});
+let possibleOptions = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 const winningCombos = [
   [1, 2, 3],
@@ -35,6 +28,16 @@ const winningCombos = [
   [3, 5, 7],
 ];
 
+let aiMode = false;
+document.querySelector(".aiButton").addEventListener("click", (event) => {
+  aiMode = !aiMode;
+  if (aiMode) {
+    event.target.innerHTML = "AI mode on";
+  } else {
+    event.target.innerHTML = "AI mode off";
+  }
+});
+
 let winnerWinnerChickenDinner = false;
 
 const logGameResults = (words) => {
@@ -43,11 +46,9 @@ const logGameResults = (words) => {
 
 const compareArrays = (win, playerCombo) => {
   // bStr = "123" exist in aStr = "12345"? subset
-  return win.every((value) => playerCombo.includes(value)); // every, loops through the win array. includes - checks if the players wining combo is in the array. like lotto
+  return win.every((winValue) => playerCombo.includes(winValue)); // every, loops through the win array. includes - checks if the players wining combo is in the array. like lotto
 }; //determines whether an array includes a certain value among its entries, returning true or false
-// what is the value?
 
-//Players
 document.querySelectorAll(".grid").forEach((text) => {
   text.addEventListener("click", () => {
     // Check if the HTML already has a value inside it
@@ -85,12 +86,8 @@ document.querySelectorAll(".grid").forEach((text) => {
             if (currentPlayer === playerO) {
               document.querySelector(".oPoints").innerHTML = currentPlayer.wins;
             }
-            console.log(currentPlayer.wins);
           }
         }
-
-        // we should validate the game state
-        // check if the game ended in a draw
         if (
           playerX.combination.length + playerO.combination.length === 9 &&
           !winnerWinnerChickenDinner
@@ -105,13 +102,10 @@ document.querySelectorAll(".grid").forEach((text) => {
       } else if (currentPlayer === playerO) {
         currentPlayer = playerX;
       }
-
       if (aiMode && currentPlayer === playerO) {
         //   ai to select a empty grid randomly
         const randomChoice = Math.floor(Math.random() * possibleOptions.length);
-        console.log(randomChoice);
         document.querySelector(".g" + possibleOptions[randomChoice]).click();
-        console.log("clicking cause I am AI");
       }
     }
   });
@@ -121,7 +115,6 @@ document.querySelectorAll(".grid").forEach((text) => {
 /// hover over grid and show which player is playing
 // when you leave grid don't show
 ///==============================================
-
 document.querySelectorAll(".grid").forEach((cell) => {
   cell.addEventListener("mouseover", () => {
     if (
@@ -144,23 +137,10 @@ document.querySelectorAll(".grid").forEach((cell) => {
 //=======================================
 // to restart the whole game/page
 //=======================================
-
 // restart game
 // go back to the first player
 // clear the board
 // make it so the button stays put
-
-// const startGame = () => {
-//   currentPlayer = playerX;
-//   document.querySelectorAll(".grid").forEach((cell) => {
-//     cell.innerHTML = "";
-//   });
-//   logGameResults("");
-//   playerX.combination = [];
-//   playerO.combination = [];
-//   winnerWinnerChickenDinner = false;
-// };
-
 const startGame = () => {
   currentPlayer = playerX;
   document.querySelectorAll(".grid").forEach((cell) => {
@@ -177,57 +157,11 @@ const startGame = () => {
 ////=====================
 // AI mode
 ////=====================
+//set the AI button to run
 // Ai is the second player
 //needs to select a random grid/cell
 //then switch back to player 1/X
 // play out the game, see who wins/draw
 //AI to count points under playerO
-//playerO to change to ai and announce score? Need to change gameResult?
-
-//set the AI button to run
-
-const aI = {
-  currentChoice: null,
-};
-
-document.querySelectorAll(".grid").forEach((aiChoice) => {
-  aiChoice.addEventListener("click", () => {
-    if (
-      !aiChoice.classList.contains(playerX.name) &&
-      !winnerWinnerChickenDinner
-    ) {
-      randomChoice = Math.floor(Math.random() * grids.length);
-      aI.currentChoice = grids[randomChoice];
-      console.log("something");
-    }
-  });
-});
-
-// function computerChooses() {
-//   const randomChoice = Math.floor(Math.random() * choices.length);
-//   aI.currentChoice = choices[randomChoice];
-// }
-
-// document.querySelectorAll(".grid").forEach((text) => {
-//   text.addEventListener("click", () => {
-//     if (!text.classList.contains(playerX.name) && !winnerWinnerChickenDinner)
-//       text.classList.add(currentPlayer.name);
-//       console.log();
-//   });
-// });
-
-//     if (
-//       !text.classList.contains(playerX.name) &&
-//       !winnerWinnerChickenDinner &&
-//       !text.classList.contains(playerO.name)
-//     ) {
-//       text.innerHTML = currentPlayer.name;
-//       // Add new class to "text" element when clicking
-//       // e.g. X, O
-//       text.classList.add(currentPlayer.name);
-//     }
-//   });
-//   currentPlayer.combination.push(parseInt(text.getAttribute("id")));
-// });
 
 document.querySelector(".restartButton").addEventListener("click", startGame);
