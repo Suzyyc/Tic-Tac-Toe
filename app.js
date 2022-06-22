@@ -30,6 +30,12 @@ const winningCombos = [
   [3, 5, 7],
 ];
 
+////=====================
+// AI mode
+////=====================
+//set the AI button to run
+// Ai is the second player
+
 let aiMode = false;
 document.querySelector(".aiButton").addEventListener("click", (event) => {
   aiMode = !aiMode;
@@ -40,6 +46,7 @@ document.querySelector(".aiButton").addEventListener("click", (event) => {
   }
 });
 
+// winner
 let winnerWinnerChickenDinner = false;
 
 const logGameResults = (words) => {
@@ -53,14 +60,16 @@ const compareArrays = (win, playerCombo) => {
 
 document.querySelectorAll(".grid").forEach((text) => {
   text.addEventListener("click", () => {
+    // for each cell, adding a click listener
     // Check if the HTML already has a value inside it
-    // Change the guard because of hover
+
+    // checking if the current cell is empty and can be clicked and there's no winner
     if (
       !text.classList.contains(playerX.name) &&
       !winnerWinnerChickenDinner &&
       !text.classList.contains(playerO.name)
     ) {
-      text.innerHTML = currentPlayer.name;
+      text.innerHTML = currentPlayer.name; // adding the players name to the cell
       // Add new class to "text" element when clicking
       // e.g. X, O
       text.classList.add(currentPlayer.name);
@@ -72,7 +81,7 @@ document.querySelectorAll(".grid").forEach((text) => {
       const removePosition = possibleOptions.indexOf(currentPositon);
       possibleOptions.splice(removePosition, 1);
 
-      currentPlayer.combination.push(currentPositon);
+      currentPlayer.combination.push(currentPositon); // adding the current postion to the players combo
 
       // get winning winningCombos
       if (currentPlayer.combination.length >= 3) {
@@ -81,19 +90,16 @@ document.querySelectorAll(".grid").forEach((text) => {
           if (hasWon) {
             logGameResults(currentPlayer.name + " Won");
             winnerWinnerChickenDinner = true;
-            currentPlayer.wins++;
+            currentPlayer.wins++; // adding 1 to the player point
             if (currentPlayer === playerX) {
-              document.querySelector(".xPoints").innerHTML = currentPlayer.wins;
+              document.querySelector(".xPoints").innerHTML = currentPlayer.wins; //showing the player points
             }
             if (currentPlayer === playerO) {
               document.querySelector(".oPoints").innerHTML = currentPlayer.wins;
             }
           }
         }
-        if (
-          playerX.combination.length + playerO.combination.length === 9 &&
-          !winnerWinnerChickenDinner
-        ) {
+        if (possibleOptions.length === 0 && !winnerWinnerChickenDinner) {
           logGameResults("It's a draw");
         }
       }
@@ -104,10 +110,14 @@ document.querySelectorAll(".grid").forEach((text) => {
       } else if (currentPlayer === playerO) {
         currentPlayer = playerX;
       }
+      //needs to select a random grid/cell
+      //then switch back to player 1/X
+      // play out the game, see who wins/draw
+      //AI to count points under playerO
       if (aiMode && currentPlayer === playerO) {
         //   ai to select a empty grid randomly
         const randomChoice = Math.floor(Math.random() * possibleOptions.length);
-        document.querySelector(".g" + possibleOptions[randomChoice]).click();
+        document.querySelector(".g" + possibleOptions[randomChoice]).click(); // ai will randomly choose a class grid from possible options which are left and simulate a click in the grid
       }
     }
   });
@@ -118,12 +128,14 @@ document.querySelectorAll(".grid").forEach((text) => {
 // when you leave grid don't show
 ///==============================================
 document.querySelectorAll(".grid").forEach((cell) => {
+  // looping through each element/grid
   cell.addEventListener("mouseover", () => {
+    // checking each grid to see when the mouse goes over it
     if (
-      !playerX.combination.includes(parseInt(cell.getAttribute("id"))) && // if player combo does not include a cell id, run code
+      !playerX.combination.includes(parseInt(cell.getAttribute("id"))) && // checking each grid to see if the player combination includes the cel id e.g 7 if empty
       !playerO.combination.includes(parseInt(cell.getAttribute("id")))
     ) {
-      cell.innerHTML = currentPlayer.name;
+      cell.innerHTML = currentPlayer.name; // showing the players name
     }
   });
   cell.addEventListener("mouseout", () => {
@@ -131,7 +143,7 @@ document.querySelectorAll(".grid").forEach((cell) => {
       !playerX.combination.includes(parseInt(cell.getAttribute("id"))) &&
       !playerO.combination.includes(parseInt(cell.getAttribute("id")))
     ) {
-      cell.innerHTML = ""; // leave cell id empty
+      cell.innerHTML = ""; // leave cell empty/reset
     }
   });
 });
@@ -146,6 +158,7 @@ document.querySelectorAll(".grid").forEach((cell) => {
 const startGame = () => {
   currentPlayer = playerX;
   document.querySelectorAll(".grid").forEach((cell) => {
+    // looping through each grid and setting it as empty
     cell.innerHTML = "";
     cell.classList.remove(playerO.name, playerX.name);
   });
@@ -155,15 +168,5 @@ const startGame = () => {
   winnerWinnerChickenDinner = false;
   possibleOptions = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 };
-
-////=====================
-// AI mode
-////=====================
-//set the AI button to run
-// Ai is the second player
-//needs to select a random grid/cell
-//then switch back to player 1/X
-// play out the game, see who wins/draw
-//AI to count points under playerO
 
 document.querySelector(".restartButton").addEventListener("click", startGame);

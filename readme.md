@@ -24,7 +24,7 @@ Link to the [brief](https://git.generalassemb.ly/seir59anz/seir59anz-course-mate
 
 - Can play with a friend
 - Keep track of wins
-- Shows whose won
+- Show whose won
 - Can restart current game
 - Can play with a AI
 
@@ -39,6 +39,6 @@ The game starts off with Player X going first then switches to Player O.
 
 ## AI Mode
 
-To turn on AI mode, we click the "AI mode off" button to show "AI mode on". This way the computer will select a grid to play with you.
+To turn on AI mode, we click the "AI mode off" button to show "AI mode on". This way the computer will select a grid and play with you.
 
 ![](./img/Default%20AI%20Mode%20ON.png)
