@@ -28,7 +28,8 @@ Link to the [brief](https://git.generalassemb.ly/seir59anz/seir59anz-course-mate
 - Can restart current game
 - Can play with a AI
 
-<hr> 
+<hr>
+
 ## Player Mode
 
 The game starts off with Player X going first then switches to Player O.
