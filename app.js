@@ -100,7 +100,7 @@ document.querySelectorAll(".grid").forEach((text) => {
           }
         }
         if (possibleOptions.length === 0 && !winnerWinnerChickenDinner) {
-          //no poosibile options - log draw
+          //no possibile options - log draw
           logGameResults("It's a draw");
         }
       }
@@ -133,7 +133,7 @@ document.querySelectorAll(".grid").forEach((cell) => {
   cell.addEventListener("mouseover", () => {
     // checking each grid to see when the mouse goes over it
     if (
-      !playerX.combination.includes(parseInt(cell.getAttribute("id"))) && // checking each grid to see if the player combination includes the cel id e.g 7 if empty
+      !playerX.combination.includes(parseInt(cell.getAttribute("id"))) && // checking each grid to see if the player combination includes the cell id e.g 7 if empty
       !playerO.combination.includes(parseInt(cell.getAttribute("id")))
     ) {
       cell.innerHTML = currentPlayer.name; // showing the players name

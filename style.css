@@ -12,6 +12,10 @@ body {
   background-attachment: fixed;
 }
 
+p {
+  margin: 0;
+}
+
 .mainDisplay {
   display: flex;
   justify-content: center;
@@ -32,6 +36,8 @@ h1 {
   display: flex;
   align-items: center;
   font-size: 25px;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
 }
 
 .grid {
@@ -116,4 +122,30 @@ button {
   font-family: "Nothing You Could Do", cursive;
   font-size: 16px;
   line-height: 20px;
+}
+
+@media (max-width: 600px) {
+  body {
+    background-position-x: center;
+  }
+  .mainDisplay {
+    display: grid;
+  }
+
+  h1 {
+    font-size: 50px;
+  }
+
+  p {
+    font-size: 16px;
+  }
+  #ttt {
+    grid-row-start: 1;
+    margin-bottom: 40px;
+  }
+
+  .results {
+    justify-content: center;
+    margin: 0;
+  }
 }
