@@ -47,11 +47,11 @@ document.querySelector(".aiButton").addEventListener("click", (event) => {
 });
 
 // winner
-let winnerWinnerChickenDinner = false;
+let winnerWinnerChickenDinner = false; // win state
 
 const logGameResults = (words) => {
   document.querySelector(".gameResult").innerHTML = words;
-};
+}; // DRY using this for other results
 
 const compareArrays = (win, playerCombo) => {
   // bStr = "123" exist in aStr = "12345"? subset
@@ -61,7 +61,6 @@ const compareArrays = (win, playerCombo) => {
 document.querySelectorAll(".grid").forEach((text) => {
   text.addEventListener("click", () => {
     // for each cell, adding a click listener
-    // Check if the HTML already has a value inside it
 
     // checking if the current cell is empty and can be clicked and there's no winner
     if (
@@ -70,7 +69,7 @@ document.querySelectorAll(".grid").forEach((text) => {
       !text.classList.contains(playerO.name)
     ) {
       text.innerHTML = currentPlayer.name; // adding the players name to the cell
-      // Add new class to "text" element when clicking
+      // Add new class to "text" element when clicking cause of hover
       // e.g. X, O
       text.classList.add(currentPlayer.name);
 
@@ -78,7 +77,7 @@ document.querySelectorAll(".grid").forEach((text) => {
       // Turn 2 - Switch player to player0 and let them click a cell
       // get cell number once clicked
       const currentPositon = parseInt(text.getAttribute("id"));
-      const removePosition = possibleOptions.indexOf(currentPositon);
+      const removePosition = possibleOptions.indexOf(currentPositon); // for ai and draw conditions
       possibleOptions.splice(removePosition, 1);
 
       currentPlayer.combination.push(currentPositon); // adding the current postion to the players combo
@@ -86,6 +85,7 @@ document.querySelectorAll(".grid").forEach((text) => {
       // get winning winningCombos
       if (currentPlayer.combination.length >= 3) {
         for (let win of winningCombos) {
+          //looing through the win combos
           const hasWon = compareArrays(win, currentPlayer.combination);
           if (hasWon) {
             logGameResults(currentPlayer.name + " Won");
@@ -100,6 +100,7 @@ document.querySelectorAll(".grid").forEach((text) => {
           }
         }
         if (possibleOptions.length === 0 && !winnerWinnerChickenDinner) {
+          //no poosibile options - log draw
           logGameResults("It's a draw");
         }
       }
@@ -118,7 +119,7 @@ document.querySelectorAll(".grid").forEach((text) => {
         //   ai to select a empty grid randomly
         const randomChoice = Math.floor(Math.random() * possibleOptions.length);
         document.querySelector(".g" + possibleOptions[randomChoice]).click(); // ai will randomly choose a class grid from possible options which are left and simulate a click in the grid
-      }
+      } // .g is there because you cannot queryselect a ID if it's a number
     }
   });
 });
