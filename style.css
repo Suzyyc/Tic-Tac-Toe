@@ -141,7 +141,7 @@ button {
   }
   #ttt {
     grid-row-start: 1;
-    margin-bottom: 40px;
+    margin: 0px 0px 40px;
   }
 
   .results {
