@@ -14,7 +14,7 @@ Feel free to have a [play](https://suzyyc.github.io/Tic-Tac-Toe/).
 
 ## Brief
 
-Link to the [brief](https://git.generalassemb.ly/seir59anz/seir59anz-course-materials/tree/main/unit1/project).
+Link to the [brief](brief.md).
 
 <hr>
 
