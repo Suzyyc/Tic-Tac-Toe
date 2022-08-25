@@ -1,6 +1,6 @@
 # Tic Tac Toe
 
-### Week 3 - First Project
+### First Project
 
 A online Tic-Tac-Toe game. Using applications:
 
